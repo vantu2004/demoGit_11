@@ -13,7 +13,7 @@ namespace Week_01
         {
 
         }
-        public GiangVien(string cmnd) : base(cmnd)
+        public GiangVien(string id) : base(id)
         {
 
         }

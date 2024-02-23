@@ -28,9 +28,9 @@ namespace Week_01
             Sdt = sdt;
             GioiTinh = gioiTinh;
         }
-        public KeThua_DoiTuong(string cmnd)
+        public KeThua_DoiTuong(string id)
         {
-            Cmnd = cmnd;
+            Id = id;
         }
         public string Ten { get => ten; set => ten = value; }
         public string DiaChi { get => diaChi; set => diaChi = value; }

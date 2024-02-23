@@ -32,12 +32,12 @@ namespace Week_01
         }
         public void Xoa(GiangVien gv)
         {
-            string sqlStr = string.Format("DELETE FROM GiangVien WHERE Cmnd = ('{0}')", gv.Cmnd);
+            string sqlStr = string.Format("DELETE FROM GiangVien WHERE Id = ('{0}')", gv.Id);
             thucThi(sqlStr);
         }
         public void Sua(GiangVien gv)
         {
-            string sqlStr = string.Format("UPDATE GiangVien SET Ten = '{0}', DiaChi ='{1}', Cmnd = '{2}', NgaySinh = '{3}', Email = '{4}', Id = '{5}', Sdt = '{6}', GioiTinh = '{7}' WHERE Cmnd = {2}", 
+            string sqlStr = string.Format("UPDATE GiangVien SET Ten = '{0}', DiaChi ='{1}', Cmnd = '{2}', NgaySinh = '{3}', Email = '{4}', Id = '{5}', Sdt = '{6}', GioiTinh = '{7}' WHERE Id = {5}", 
                 gv.Ten, gv.DiaChi, gv.Cmnd, gv.NgaySinh, gv.Email, gv.Id, gv.Sdt, gv.GioiTinh);
             thucThi(sqlStr);
         }

@@ -73,7 +73,7 @@ namespace Week_01
         public string dinhDangNgaySinh()
         {
             TimeSpan ts = DateTime.Now - Convert.ToDateTime(ngaySinh);
-            if ((ts.TotalDays / 365.25) >= 18) // So sánh với 18 năm (hoặc một giá trị cụ thể khác)
+            if ((ts.TotalDays / 365.25) >= 17) // So sánh với 18 năm (hoặc một giá trị cụ thể khác)
                 return ngaySinh;
             return "false";
         }

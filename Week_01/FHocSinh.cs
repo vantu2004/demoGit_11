@@ -23,14 +23,14 @@ namespace Week_01
         public void Form1_Load(object sender, EventArgs e)
         {            
             DataTable dt = hsDao.Load();
-            dgvwHocSinh.DataSource = dt;
+            ucThongTin.dgvw.DataSource = dt;
         }
 
         
         private void btnThem_Click(object sender, EventArgs e)
         {
-            KiemTra_ThuocTinh null_notNull = new KiemTra_ThuocTinh(dtpkrNgaySinh.Value.ToShortDateString(), tbxEmail.Text, tbxId.Text, tbxSdt.Text, tbxGioiTinh.Text);
-            HocSinh hs = new HocSinh(tbxHoVaTen.Text, tbxDiaChi.Text, tbxCMND.Text, null_notNull.dinhDangNgaySinh(),
+            KiemTra_ThuocTinh null_notNull = new KiemTra_ThuocTinh(ucThongTin.dtpkrNgaySinh.Value.ToShortDateString(), ucThongTin.tbxEmail.Text, ucThongTin.tbxId.Text, ucThongTin.tbxSdt.Text, ucThongTin.tbxGioiTinh.Text);
+            HocSinh hs = new HocSinh(ucThongTin.tbxHoVaTen.Text, ucThongTin.tbxDiaChi.Text, ucThongTin.tbxCMND.Text, null_notNull.dinhDangNgaySinh(),
                 null_notNull.email_null(), null_notNull.id_null(), null_notNull.sdt_null(), null_notNull.gioiTinh_null());
             hsDao.Them(hs);
             Form1_Load(sender, e);
@@ -38,15 +38,15 @@ namespace Week_01
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            HocSinh hs = new HocSinh(tbxCMND.Text);
+            HocSinh hs = new HocSinh(ucThongTin.tbxId.Text);
             hsDao.Xoa(hs);
             Form1_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            KiemTra_ThuocTinh null_notNull = new KiemTra_ThuocTinh(dtpkrNgaySinh.Value.ToShortDateString(), tbxEmail.Text, tbxId.Text, tbxSdt.Text, tbxGioiTinh.Text);
-            HocSinh hs = new HocSinh(tbxHoVaTen.Text, tbxDiaChi.Text, tbxCMND.Text, null_notNull.dinhDangNgaySinh(),
+            KiemTra_ThuocTinh null_notNull = new KiemTra_ThuocTinh(ucThongTin.dtpkrNgaySinh.Value.ToShortDateString(), ucThongTin.tbxEmail.Text, ucThongTin.tbxId.Text, ucThongTin.tbxSdt.Text, ucThongTin.tbxGioiTinh.Text);
+            HocSinh hs = new HocSinh(ucThongTin.tbxHoVaTen.Text, ucThongTin.tbxDiaChi.Text, ucThongTin.tbxCMND.Text, null_notNull.dinhDangNgaySinh(),
                 null_notNull.email_null(), null_notNull.id_null(), null_notNull.sdt_null(), null_notNull.gioiTinh_null());
             hsDao.Sua(hs);
             Form1_Load(sender, e);
@@ -63,17 +63,26 @@ namespace Week_01
             int rowIndex = e.RowIndex;
             if (rowIndex >= 0)
             {
-                DataGridViewRow row = dgvwHocSinh.Rows[rowIndex];
+                DataGridViewRow row = ucThongTin.dgvw.Rows[rowIndex];
 
-                tbxHoVaTen.Text = row.Cells[0].Value.ToString();
-                tbxDiaChi.Text = row.Cells[1].Value.ToString();
-                tbxCMND.Text = row.Cells[2].Value.ToString();
-                dtpkrNgaySinh.Value = Convert.ToDateTime(row.Cells[3].Value.ToString());
-                tbxEmail.Text = row.Cells[4].Value.ToString();
-                tbxId.Text = row.Cells[5].Value.ToString();
-                tbxSdt.Text = row.Cells[6].Value.ToString();
-                tbxGioiTinh.Text = row.Cells[7].Value.ToString();
+                ucThongTin.tbxHoVaTen.Text = row.Cells[0].Value.ToString();
+                ucThongTin.tbxDiaChi.Text = row.Cells[1].Value.ToString();
+                ucThongTin.tbxCMND.Text = row.Cells[2].Value.ToString();
+                ucThongTin.dtpkrNgaySinh.Value = Convert.ToDateTime(row.Cells[3].Value.ToString());
+                ucThongTin.tbxEmail.Text = row.Cells[4].Value.ToString();
+                ucThongTin.tbxId.Text = row.Cells[5].Value.ToString();
+                ucThongTin.tbxSdt.Text = row.Cells[6].Value.ToString();
+                ucThongTin.tbxGioiTinh.Text = row.Cells[7].Value.ToString();
             }
+        }
+
+        private void ucThongTin_Load(object sender, EventArgs e)
+        {
+            ucThongTin.btnThem.Click += (btnThem_Click);
+            ucThongTin.btnSua.Click += (btnSua_Click);
+            ucThongTin.btnXoa.Click += (btnXoa_Click);
+            ucThongTin.dgvw.CellClick += (dgvwHocSinh_CellClick);
+            ucThongTin.btnGiangVien.Click += (btnGiangVien_Click);
         }
     }
 }

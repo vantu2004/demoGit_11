@@ -17,7 +17,7 @@ namespace Week_01
         {
             
         }
-        public HocSinh(string cmnd) : base(cmnd)
+        public HocSinh(string id) : base(id)
         {
 
         }
